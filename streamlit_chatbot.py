@@ -14,7 +14,7 @@ menu = st.sidebar.radio(
     "Menú",
     ["Temperatura", "Seleccionar Modelo"]
 )
-if menu == "Temperatura"
+if menu == "Temperatura":
     temperatura = st.slider("Selecciona la temperatura",
         min_value=0.0,
         max_value=2.0,
