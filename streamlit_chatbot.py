@@ -4,10 +4,27 @@ from langchain_core.messages import AIMessage, HumanMessage
 
 # Configuración inicial
 st.set_page_config(page_title="Chatbot Básico", page_icon="🤖")
-st.title("🤖 Chatbot - paso 2 - con LangChain")
+st.title("Chatbot - con LangChain")
 st.markdown("Este es un *chatbot de ejemplo* construido con LangChain + Streamlit.")
 
 chat_model = ChatGoogleGenerativeAI(model="gemini-2.5-flash")
+
+# Menú lateral
+menu = st.sidebar.radio(
+    "Menú",
+    ["Temperatura", "Seleccionar Modelo"]
+)
+
+temperatura = st.slider("Selecciona la temperatura",
+    min_value=0.0,
+    max_value=2.0,
+    value=1,  
+    step=0.05
+)
+
+
+if menu == Temperatura:
+
 
 # Inicializar el historial de mensajes en session_state
 if "mensajes" not in st.session_state:
@@ -37,3 +54,4 @@ if pregunta:
         st.markdown(respuesta.content)
 
     st.session_state.mensajes.append(respuesta)
+
