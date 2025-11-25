@@ -14,16 +14,14 @@ menu = st.sidebar.radio(
     "Menú",
     ["Temperatura", "Seleccionar Modelo"]
 )
+if menu == "Temperatura"
+    temperatura = st.slider("Selecciona la temperatura",
+        min_value=0.0,
+        max_value=2.0,
+    value=1.0,  
+        step=0.05
+    )
 
-temperatura = st.slider("Selecciona la temperatura",
-    min_value=0.0,
-    max_value=2.0,
-    value=1,  
-    step=0.05
-)
-
-
-if menu == Temperatura:
 
 
 # Inicializar el historial de mensajes en session_state
