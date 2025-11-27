@@ -57,6 +57,10 @@ with st.sidebar:
         elif tema == "Christmas":
             st.markdown("""
                 <style>
+                .stApp {
+                    background-color: #008000;
+                    color: #FF0000;
+                }
                 .snowflake {
                 color: black;
                 font-size: 1.5em;
