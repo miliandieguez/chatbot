@@ -22,6 +22,7 @@ with st.sidebar:
     cols[0].write("Técnico")
     cols[2].write("Creativo")
     temperatura = st.slider(
+        ""
         min_value=0.0,
         max_value=2.0,
     value=1.0,  
