@@ -17,17 +17,17 @@ with st.sidebar:
         "Selecciona una opción:",
     ["Seleccionar modelo", "Tema"]
     )
-    st.write("Temperatura")
-    cols = st.columns(3)
-    cols[0].write("Técnico")
-    cols[2].write("Creativo")
+
     temperatura = st.slider(
-        " "
+        "Selecciona temperatura:" 
         min_value=0.0,
         max_value=2.0,
     value=1.0,  
         step=0.05
     )
+    cols = st.columns(3)
+    cols[0].write("Técnico")
+    cols[2].write("Creativo")
 
 
 
