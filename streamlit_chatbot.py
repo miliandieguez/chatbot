@@ -19,7 +19,7 @@ with st.sidebar:
     )
 
     temperatura = st.slider(
-        "Selecciona temperatura:" 
+        "Selecciona temperatura:",
         min_value=0.0,
         max_value=2.0,
     value=1.0,  
