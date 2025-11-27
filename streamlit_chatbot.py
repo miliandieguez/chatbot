@@ -58,7 +58,7 @@ with st.sidebar:
             st.markdown("""
                 <style>
                 .snowflake {
-                color: white;
+                color: black;
                 font-size: 1.5em;
                 position: fixed;
                 top: -10%;
