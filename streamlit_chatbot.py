@@ -13,10 +13,6 @@ chat_model = ChatGoogleGenerativeAI(model="gemini-2.5-flash")
 
 with st.sidebar:
     st.title("Menú")
-    menu = st.radio(
-        "Selecciona una opción:",
-    ["Seleccionar modelo", "Tema"]
-    )
 
     temperatura = st.slider(
         "Selecciona temperatura:",
@@ -28,6 +24,60 @@ with st.sidebar:
     cols = st.columns(3)
     cols[0].write("Técnico")
     cols[2].write("Creativo")
+
+    with st.expander("Temas"):
+        tema = st.selectbox(
+            "Selecciona un tema:",
+            ("Light", "Dark", "Christmas", "Pink", "Ocean")
+        )
+        if tema == "Light":
+            st.markdown(
+                """
+                <style>
+                .stApp {
+                    background-color: #FFFFFF;
+                    color: #000000;
+                }
+                </style>
+                """,
+                unsafe_allow_html=True
+            )
+        elif tema == "Dark":
+            st.markdown(
+                """
+                <style>
+                .stApp {
+                    background-color: #000000;
+                    color: #FFFFFF;
+                }
+                </style>
+                """,
+                unsafe_allow_html=True
+            )
+        elif tema == "Christmas":
+            st.markdown("""
+                <style>
+                .snowflake {
+                color: white;
+                font-size: 1.5em;
+                position: fixed;
+                top: -10%;
+                animation: fall 10s linear infinite;
+                }
+
+                @keyframes fall {
+                0% {top: -10%;}
+                00% {top: 110%;}
+                }
+                </style>
+
+                <div class="snowflake">❄</div>
+                <div class="snowflake" style="left:20%">❄</div>
+                <div class="snowflake" style="left:40%">❄</div>
+                <div class="snowflake" style="left:60%">❄</div>
+                <div class="snowflake" style="left:80%">❄</div>
+                """, unsafe_allow_html=True)
+
 
 
 
