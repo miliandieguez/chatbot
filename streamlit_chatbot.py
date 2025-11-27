@@ -18,7 +18,7 @@ with st.sidebar:
     ["Seleccionar modelo", "Tema"]
     )
     st.write("Temperatura")
-    cols = st.columns[1, 2, 1]
+    cols = st.columns[3]
     cols[0].write("Técnico")
     cols[2].write("Creativo")
     temperatura = st.slider(
