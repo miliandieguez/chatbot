@@ -49,40 +49,40 @@ with st.sidebar:
 
             /* Fons global de tota l'app */
             .stApp {
-                background-color: #000000 !important;
-                color: #FFFFFF !important;
+                background-color: #353535 !important;
+                color: #c4c4c4 !important;
             }
 
             /* Contingut principal */
             .block-container {
-                background-color: #000000 !important;
-                color: #FFFFFF !important;
+                background-color: #353535 !important;
+                color: #c4c4c4 !important;
             }
 
             /* Zona principal (body) */
             .main {
-                background-color: #000000 !important;
-                color: #FFFFFF !important;
+                background-color: #353535 !important;
+                color: #c4c4c4 !important;
             }
 
             /* Sidebar */
             section[data-testid="stSidebar"] {
-                background-color: #000000 !important;
-                color: #FFFFFF !important;
+                background-color: #595959 !important;
+                color: #c4c4c4 !important;
             }
 
             /* Text del sidebar */
             section[data-testid="stSidebar"] * {
-                color: #FFFFFF !important;
+                color: #c4c4c4 !important;
             }
 
             /* Inputs: select, slider, text_input */
             .stSelectbox, .stSlider, .stTextInput {
-                color: #FFFFFF !important;
+                color: #c4c4c4 !important;
             }
             .stSelectbox div, .stTextInput input,
             .stSlider > div > div {
-                color: #FFFFFF !important;
+                color: #c4c4c4 !important;
             }
 
             </style>
