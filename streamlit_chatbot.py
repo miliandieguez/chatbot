@@ -50,6 +50,7 @@ with st.sidebar:
                     background-color: #000000;
                     color: #FFFFFF;
                 }
+                
                 </style>
                 """,
                 unsafe_allow_html=True
@@ -111,8 +112,19 @@ with st.sidebar:
                 </style>
                 """,
                 unsafe_allow_html=True
+            )
+        elif tema == "Ocean":
+            st.markdown(
+                """
+                <style>
+                .stApp {
+                    background-color: #065588;
+                    color: #A3BBE4;
+                }
+                </style>
+                """,
+                unsafe_allow_html=True
             )            
-
 
 
 # Inicializar el historial de mensajes en session_state
