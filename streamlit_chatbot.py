@@ -54,6 +54,7 @@ with st.sidebar:
                 """,
                 unsafe_allow_html=True
             )
+
         elif tema == "Christmas":
             st.markdown("""
                 <style>
@@ -62,26 +63,55 @@ with st.sidebar:
                     color: #FF0000;
                 }
                 .snowflake {
-                color: black;
-                font-size: 1.5em;
-                position: fixed;
-                top: -10%;
-                animation: fall 10s linear infinite;
+                    position: fixed;
+                    top: -10%;
+                    color: white;
+                    user-select: none;
+                    pointer-events: none;
                 }
 
                 @keyframes fall {
-                0% {top: -10%;}
-                00% {top: 110%;}
+                    0% { transform: translateY(-10vh); }
+                    100% { transform: translateY(110vh); }
                 }
                 </style>
 
-                <div class="snowflake">❄</div>
-                <div class="snowflake" style="left:20%">❄</div>
-                <div class="snowflake" style="left:40%">❄</div>
-                <div class="snowflake" style="left:60%">❄</div>
-                <div class="snowflake" style="left:80%">❄</div>
-                """, unsafe_allow_html=True)
+                <script>
+                // Genera 50 flocs de neu aleatoris
+                const totalFlakes = 50;
 
+                for (let i = 0; i < totalFlakes; i++) {
+                    const flake = document.createElement("div");
+                    flake.className = "snowflake";
+                    flake.textContent = "❄";
+
+                    const size = Math.random() * 1.5 + 0.5;        // mida 0.5–2em
+                    const left = Math.random() * 100;              // posició aleatòria
+                    const duration = Math.random() * 5 + 5;        // 5–10s
+                    const delay = Math.random() * 5;               // retard 0–5s
+
+                    flake.style.left = `${left}vw`;
+                    flake.style.fontSize = `${size}em`;
+                    flake.style.animation = `fall ${duration}s linear infinite`;
+                    flake.style.animationDelay = `${delay}s`;
+
+                    document.body.appendChild(flake);
+                }
+                </script>
+            """, unsafe_allow_html=True)
+
+        elif tema == "Pink":
+            st.markdown(
+                """
+                <style>
+                .stApp {
+                    background-color: #F8C8DC;
+                    color: 93004F;
+                }
+                </style>
+                """,
+                unsafe_allow_html=True
+            )            
 
 
 
