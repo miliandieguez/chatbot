@@ -42,19 +42,52 @@ with st.sidebar:
                 """,
                 unsafe_allow_html=True
             )
+ 
         elif tema == "Dark":
-            st.markdown(
-                """
-                <style>
-                .stApp {
-                    background-color: #000000;
-                    color: #FFFFFF;
-                }
-                
-                </style>
-                """,
-                unsafe_allow_html=True
-            )
+            st.markdown("""
+            <style>
+
+            /* Fons global de tota l'app */
+            .stApp {
+                background-color: #000000 !important;
+                color: #FFFFFF !important;
+            }
+
+            /* Contingut principal */
+            .block-container {
+                background-color: #000000 !important;
+                color: #FFFFFF !important;
+            }
+
+            /* Zona principal (body) */
+            .main {
+                background-color: #000000 !important;
+                color: #FFFFFF !important;
+            }
+
+            /* Sidebar */
+            section[data-testid="stSidebar"] {
+                background-color: #000000 !important;
+                color: #FFFFFF !important;
+            }
+
+            /* Text del sidebar */
+            section[data-testid="stSidebar"] * {
+                color: #FFFFFF !important;
+            }
+
+            /* Inputs: select, slider, text_input */
+            .stSelectbox, .stSlider, .stTextInput {
+                color: #FFFFFF !important;
+            }
+            .stSelectbox div, .stTextInput input,
+            .stSlider > div > div {
+                color: #FFFFFF !important;
+            }
+
+            </style>
+        """, unsafe_allow_html=True)
+
 
         elif tema == "Christmas":
             st.markdown("""
