@@ -46,16 +46,22 @@ with st.sidebar:
 
         elif tema == "Pink":
             st.markdown(
-            """
-            <style>
-            .stApp {
-                background: linear-gradient(to bottom, #FFFFFF, #F8C8DC, #FFFFFF);
-                color: #93004F;
-            }
-            </style>
-            """,
-            unsafe_allow_html=True
-        )
+                """
+                <style>
+                .stApp {
+                    background: linear-gradient(
+                        to bottom, 
+                        #FFFFFF 0%,      /* blanc al principi */
+                        #F8C8DC 20%,     /* rosa apareix ràpidament */
+                        #F8C8DC 80%,     /* rosa ocupa la major part */
+                        #FFFFFF 100%     /* blanc al final */
+                    );
+                    color: #93004F;
+                }
+                </style>
+                """,
+                unsafe_allow_html=True
+            )
             
         elif tema == "Ocean":
             st.markdown(
