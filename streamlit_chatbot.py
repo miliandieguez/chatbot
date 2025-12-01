@@ -2,11 +2,12 @@ import streamlit as st
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages import AIMessage, HumanMessage
 
-
+# Configuración inicial
 st.set_page_config(page_title="Chatbot Básico", page_icon="🤖")
 st.title("Eliseu")
-st.markdown("Bienvenido a tu asistente. ¿En qué puedo ayudarte?")
+st.markdown("Bienvenido a tu asitente. ¿En qué puedo ayudarte?")
 
+chat_model = ChatGoogleGenerativeAI(model="gemini-2.5-flash")
 
 def set_theme(tema):
     if tema == "Light":
@@ -17,10 +18,10 @@ def set_theme(tema):
         color_text = "#FFFFFF"
     elif tema == "Pink":
         color_fons = "#FFC0CB"
-        color_text = "#000000"
+        color_text = "#87374F"
     elif tema == "Ocean":
-        color_fons = "#87CEFA"
-        color_text = "#000000"
+        color_fons = "#2E556D"
+        color_text = "#BAE0ED"
 
     st.markdown(
         f"""
@@ -37,7 +38,14 @@ def set_theme(tema):
         unsafe_allow_html=True
     )
 
+memory_enabled = st.sidebar.toggle("Enable Chat Memory", value=True)
+if memory_enabled:
+    st.sidebar.markdown("Chat memory is enabled. Your conversation history will be saved.")
+st.sidebar.markdown("Built using **llama-3.3-70b-versatile** via **Groq API**")
 
+if "chat_history" not in st.session_state:
+    st.session_state.chat_history = []
+    
 with st.sidebar:
     st.title("Menú")
 
@@ -64,21 +72,17 @@ with st.sidebar:
     with st.expander("Modelos"):
         modelo_elegido = st.selectbox(
             "Selecciona un modelo:",
-            ("gemini-2.5-flash", "gemini-1", "otro-modelo")
+            ("gemini-2.5-flash", "gemini-3", "otro-modelo")
         )
-
-
-if "chat_model" not in st.session_state or st.session_state.chat_model.model != modelo_elegido:
-    st.session_state.chat_model = ChatGoogleGenerativeAI(model=modelo_elegido)
-
-chat_model = st.session_state.chat_model
-
-
+        chat_model.model = modelo_elegido
+        
 if "mensajes" not in st.session_state:
     st.session_state.mensajes = []
 
 
+
 for msg in st.session_state.mensajes:
+
     role = "assistant" if isinstance(msg, AIMessage) else "user"
     with st.chat_message(role):
         st.markdown(msg.content)
@@ -87,19 +91,16 @@ for msg in st.session_state.mensajes:
 pregunta = st.chat_input("Escribe tu mensaje:")
 
 if pregunta:
-    
+    # Mostrar y almacenar mensaje del usuario
     with st.chat_message("user"):
         st.markdown(pregunta)
-
+    
     st.session_state.mensajes.append(HumanMessage(content=pregunta))
 
-   
-    respuesta = chat_model.invoke(
-        st.session_state.mensajes,
-        temperature=temperatura
-    )
+    respuesta = chat_model.invoke(st.session_state.mensajes)
 
     with st.chat_message("assistant"):
         st.markdown(respuesta.content)
 
     st.session_state.mensajes.append(respuesta)
+
