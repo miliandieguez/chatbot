@@ -43,77 +43,20 @@ with st.sidebar:
                 unsafe_allow_html=True
             )
  
-        elif tema == "Dark":
-            [theme]
-            base="light"
-            primaryColor="slateBlue"
-            backgroundColor="mintCream"
-            secondaryBackgroundColor="darkSeaGreen"
-            baseRadius="full"
-
-            [theme.sidebar]
-            backgroundColor="aliceBlue"
-            secondaryBackgroundColor="skyBlue"
-            baseRadius="none"
-
-
-        elif tema == "Christmas":
-            st.markdown("""
-                <style>
-                .stApp {
-                    background-color: #008000;
-                    color: #FF0000;
-                }
-                .snowflake {
-                    position: fixed;
-                    top: -10%;
-                    color: white;
-                    user-select: none;
-                    pointer-events: none;
-                }
-
-                @keyframes fall {
-                    0% { transform: translateY(-10vh); }
-                    100% { transform: translateY(110vh); }
-                }
-                </style>
-
-                <script>
-                // Genera 50 flocs de neu aleatoris
-                const totalFlakes = 50;
-
-                for (let i = 0; i < totalFlakes; i++) {
-                    const flake = document.createElement("div");
-                    flake.className = "snowflake";
-                    flake.textContent = "❄";
-
-                    const size = Math.random() * 1.5 + 0.5;        // mida 0.5–2em
-                    const left = Math.random() * 100;              // posició aleatòria
-                    const duration = Math.random() * 5 + 5;        // 5–10s
-                    const delay = Math.random() * 5;               // retard 0–5s
-
-                    flake.style.left = `${left}vw`;
-                    flake.style.fontSize = `${size}em`;
-                    flake.style.animation = `fall ${duration}s linear infinite`;
-                    flake.style.animationDelay = `${delay}s`;
-
-                    document.body.appendChild(flake);
-                }
-                </script>
-            """, unsafe_allow_html=True)
 
         elif tema == "Pink":
             st.markdown(
-                """
-                <style>
-                .stApp {
-                    background-color: #F8C8DC;
-                    color: 93004F;
-                }
-                </style>
-                """,
-                unsafe_allow_html=True
-            )
+            """
+            <style>
+            .stApp {
+                background: linear-gradient(to bottom, #FFFFFF, #F8C8DC, #FFFFFF);
+                color: #93004F;
+            }
+            </style>
+            """,
+            unsafe_allow_html=True
+        )
+            
         elif tema == "Ocean":
             st.markdown(
                 """
