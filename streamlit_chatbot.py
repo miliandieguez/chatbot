@@ -52,8 +52,8 @@ with st.sidebar:
                     background: linear-gradient(
                         to bottom, 
                         #FFFFFF 0%,
-                        #FFFFFF 5%,
-                        #F8C8DC 10%,
+                        #FFFFFF 10%,
+                        #F8C8DC 15%,
                         #F8C8DC 80%,
                         #FFFFFF 100%
                     );
