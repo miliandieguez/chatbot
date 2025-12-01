@@ -17,7 +17,7 @@ def set_theme(tema):
         color_fons = "#1E1E1E"
         color_text = "#FFFFFF"
     elif tema == "Pink":
-        color_fons = "#FFC0CB"
+        color_fons = "#FFE2E7"
         color_text = "#87374F"
     elif tema == "Ocean":
         color_fons = "#2E556D"
@@ -45,7 +45,7 @@ st.sidebar.markdown("Built using **llama-3.3-70b-versatile** via **Groq API**")
 
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
-    
+
 with st.sidebar:
     st.title("Menú")
 
