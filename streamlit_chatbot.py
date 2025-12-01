@@ -52,8 +52,8 @@ with st.sidebar:
                     background: linear-gradient(
                         to bottom, 
                         #FFFFFF 0%,      /* blanc al principi */
-                        #F8C8DC 20%,     /* rosa apareix ràpidament */
-                        #F8C8DC 80%,     /* rosa ocupa la major part */
+                        #F8C8DC 30%,     /* rosa apareix ràpidament */
+                        #F8C8DC 70%,     /* rosa ocupa la major part */
                         #FFFFFF 100%     /* blanc al final */
                     );
                     color: #93004F;
