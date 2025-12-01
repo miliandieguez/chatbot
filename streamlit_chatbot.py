@@ -48,21 +48,33 @@ with st.sidebar:
             st.markdown(
                 """
                 <style>
-                .stApp {
+                /* Fondo para toda la pantalla */
+                body {
+                    margin: 0;
+                    height: 100vh;
                     background: linear-gradient(
-                        to bottom, 
+                        to bottom,
                         #FFFFFF 0%,
-                        #FFFFFF 10%,
-                        #F8C8DC 15%,
+                        #F8C8DC 20%,
                         #F8C8DC 80%,
                         #FFFFFF 100%
                     );
+                }
+
+                /* Fondo también para la app central (por si acaso) */
+                .stApp {
+                    background: transparent;
+                }
+
+                /* Color de texto */
+                .stApp, .stApp p, .stApp h1, .stApp h2, .stApp h3 {
                     color: #93004F;
                 }
                 </style>
                 """,
                 unsafe_allow_html=True
             )
+
             
         elif tema == "Ocean":
             st.markdown(
