@@ -44,49 +44,17 @@ with st.sidebar:
             )
  
         elif tema == "Dark":
-            st.markdown("""
-            <style>
+            [theme]
+            base="light"
+            primaryColor="slateBlue"
+            backgroundColor="mintCream"
+            secondaryBackgroundColor="darkSeaGreen"
+            baseRadius="full"
 
-            /* Fons global de tota l'app */
-            .stApp {
-                background-color: #353535 !important;
-                color: #c4c4c4 !important;
-            }
-
-            /* Contingut principal */
-            .block-container {
-                background-color: #353535 !important;
-                color: #c4c4c4 !important;
-            }
-
-            /* Zona principal (body) */
-            .main {
-                background-color: #353535 !important;
-                color: #c4c4c4 !important;
-            }
-
-            /* Sidebar */
-            section[data-testid="stSidebar"] {
-                background-color: #595959 !important;
-                color: #c4c4c4 !important;
-            }
-
-            /* Text del sidebar */
-            section[data-testid="stSidebar"] * {
-                color: #c4c4c4 !important;
-            }
-
-            /* Inputs: select, slider, text_input */
-            .stSelectbox, .stSlider, .stTextInput {
-                color: #c4c4c4 !important;
-            }
-            .stSelectbox div, .stTextInput input,
-            .stSlider > div > div {
-                color: #c4c4c4 !important;
-            }
-
-            </style>
-        """, unsafe_allow_html=True)
+            [theme.sidebar]
+            backgroundColor="aliceBlue"
+            secondaryBackgroundColor="skyBlue"
+            baseRadius="none"
 
 
         elif tema == "Christmas":
