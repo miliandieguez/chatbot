@@ -48,20 +48,13 @@ with st.sidebar:
             st.markdown(
                 """
                 <style>
-                /* Fondo para toda la pantalla */
                 body {
                     margin: 0;
                     height: 100vh;
-                    background: linear-gradient(
-                        to bottom,
-                        #FFFFFF 0%,
-                        #F8C8DC 20%,
-                        #F8C8DC 80%,
-                        #FFFFFF 100%
+                    background-color: #FFC0CB;
                     );
                 }
 
-                /* Fondo también para la app central (por si acaso) */
                 .stApp {
                     background: transparent;
                 }
