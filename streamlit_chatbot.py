@@ -51,10 +51,11 @@ with st.sidebar:
                 .stApp {
                     background: linear-gradient(
                         to bottom, 
-                        #FFFFFF 0%,      /* blanc al principi */
-                        #F8C8DC 30%,     /* rosa apareix ràpidament */
-                        #F8C8DC 70%,     /* rosa ocupa la major part */
-                        #FFFFFF 100%     /* blanc al final */
+                        #FFFFFF 0%,
+                        #FFFFFF 10%,
+                        #F8C8DC 20%,
+                        #F8C8DC 80%,
+                        #FFFFFF 100%
                     );
                     color: #93004F;
                 }
