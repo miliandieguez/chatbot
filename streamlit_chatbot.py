@@ -4,8 +4,8 @@ from langchain_core.messages import AIMessage, HumanMessage
 
 # Configuración inicial
 st.set_page_config(page_title="Chatbot Básico", page_icon="🤖")
-st.title("Chatbot")
-st.markdown("Bienvenido a este *chatbot* construido con LangChain + Streamlit.")
+st.title("Eliseu")
+st.markdown("Bienvenido a tu asitente. ¿En qué puedo ayudarte?")
 
 chat_model = ChatGoogleGenerativeAI(model="gemini-2.5-flash")
 
