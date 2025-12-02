@@ -37,7 +37,7 @@ with st.sidebar:
 
     # Explicació del model
 with st.sidebar:
-    with st.expander:
+    with st.expander("Información del modelo"):
         st.markdown("""
 ### Selecciona el modelo que mejor se adapte a tus necesidades:
 
