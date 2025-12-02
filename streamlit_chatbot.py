@@ -45,12 +45,7 @@ with st.sidebar:
                 "Selecciona un modelo:",
                 ("gemini-2.5-flash", "gemini-1.5-flash", "gemini-1.5-pro")
             )
-            if modelo_elegido == "gemini-2.5-flash":
-            elif modelo_elegido == "gemini-1.5-flash":
-            elif modelo_elegido == "gemini-1.5-pro":
-
-        
-
+    
     st.session_state.chat_model = ChatGoogleGenerativeAI(
         model=modelo_elegido,
         temperature=temperatura
