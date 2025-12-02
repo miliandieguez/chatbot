@@ -11,8 +11,8 @@ st.markdown("Bienvenido a tu asistente. ¿En qué puedo ayudarte?")
 with st.sidebar:
     st.title("Menú")
     with expander("Personalización de texto"):
-    font = st.selectbox("Tipo de letra", ["Arial", "Verdana", "Courier", "Comic Sans MS"])
-    size = st.slider("Tamaño de letra", 12, 30, 16)
+        font = st.selectbox("Tipo de letra", ["Arial", "Verdana", "Courier", "Comic Sans MS"])
+        size = st.slider("Tamaño de letra", 12, 30, 16)
 
     st.markdown(f"""
         <style>
