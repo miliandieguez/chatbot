@@ -8,10 +8,10 @@ st.title("Eliseu")
 st.markdown("Bienvenido a tu asistente. ¿En qué puedo ayudarte?")
 
 # Imatges
-conill = "https://i.ibb.co/GQ7zg6hk/conill.png"
-colom = "https://i.ibb.co/xKgvdvk2/colom.png"
-ratpenat = "https://i.ibb.co/tMwS20M0/ratpenat.png"
-elefant = "https://i.ibb.co/275HCYYv/elefant.png"
+colom = "https://i.ibb.co/WNYJxvN2/colom.png"
+conill = "https://i.ibb.co/FbcQSb9r/conill.png"
+elefant = "https://i.ibb.co/Vcz7SZnM/elefant.png"
+ratpenat = "https://i.ibb.co/XfYvJrz5/ratpenat.png"
 st.image(ratpenat, width=250)
 
 # Sidebar
