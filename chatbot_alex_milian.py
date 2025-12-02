@@ -3,7 +3,7 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages import AIMessage, HumanMessage
 
 
-st.set_page_config(page_title="Chatbot Básico", page_icon="🤖")
+st.set_page_config(page_title="Eliseu Chatbot")
 st.title("Eliseu")
 st.markdown("Bienvenido a tu asistente. ¿En qué puedo ayudarte?")
 
