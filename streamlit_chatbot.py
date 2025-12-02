@@ -137,6 +137,24 @@ for msg in st.session_state.mensajes:
     role = "assistant" if isinstance(msg, AIMessage) else "user"
     with st.chat_message(role):
         st.markdown(msg.content)
+        
+# Inicialitzar llista de missatges destacats
+if "destacados" not in st.session_state:
+    st.session_state.destacados = []
+
+for i, msg in enumerate(st.session_state.mensajes):
+    role = "assistant" if isinstance(msg, AIMessage) else "user"
+    with st.chat_message(role):
+        st.markdown(msg.content)
+        if st.button("⭐ Marcar como importante", key=f"star_{i}"):
+            st.session_state.destacados.append(msg.content)
+
+# Mostrar missatges destacats
+if st.session_state.destacados:
+    with st.expander("Mensajes importantes"):
+        for destacado in st.session_state.destacados:
+            st.write(destacado)
+
 
 # Entrada de l’usuari
 pregunta = st.chat_input("Escribe tu mensaje:")
