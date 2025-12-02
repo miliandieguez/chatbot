@@ -34,19 +34,21 @@ with st.sidebar:
         st.session_state.chat_model = ChatGoogleGenerativeAI(model="gemini-2.5-flash")
 
         with st.expander("Modelos"):
+            st.markdown("""
+### Selecciona el modelo que mejor se adapte a tus necesidades:
+
+- **gemini-2.5-flash**: Modelo más avanzado, ideal para tareas complejas y respuestas detalladas.
+- **gemini-1.5-flash**: Modelo equilibrado, adecuado para una amplia gama de aplicaciones.
+- **gemini-1.5-pro**: Modelo optimizado para eficiencia y velocidad, ideal para respuestas rápidas.
+""")
             modelo_elegido = st.selectbox(
                 "Selecciona un modelo:",
                 ("gemini-2.5-flash", "gemini-1.5-flash", "gemini-1.5-pro")
             )
             if modelo_elegido == "gemini-2.5-flash":
-                st.markdown("Modelo más avanzado, ideal para tareas complejas y respuestas detalladas.")
-                st.imatge(ratpenat, width = 250)
             elif modelo_elegido == "gemini-1.5-flash":
-                st.markdown("Modelo equilibrado, adecuado para una amplia gama de aplicaciones.")
-                st.image(conill, width = 250)
             elif modelo_elegido == "gemini-1.5-pro":
-                st.markdown("Modelo optimizado para eficiencia y velocidad, ideal para respuestas rápidas.")
-                st.image(elefant, width = 250)
+
         
 
     st.session_state.chat_model = ChatGoogleGenerativeAI(
