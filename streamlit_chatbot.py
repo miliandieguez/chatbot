@@ -9,9 +9,9 @@ st.markdown("Bienvenido a tu asistente. ¿En qué puedo ayudarte?")
 
 # Imatges
 colom = "https://i.ibb.co/WNYJxvN2/colom.png"
-conill = "https://i.ibb.co/FbcQSb9r/conill.png"
-elefant = "https://i.ibb.co/Vcz7SZnM/elefant.png"
-ratpenat = "https://i.ibb.co/XfYvJrz5/ratpenat.png"
+conill = "https://i.ibb.co/c0JDyMk/conill.png"
+peix = "https://i.ibb.co/Q760Cbmm/peix.png"
+ratpenat = "https://i.ibb.co/B5N9X0CV/ratpenat.png"
 st.image(ratpenat, width=250)
 
 # Sidebar
