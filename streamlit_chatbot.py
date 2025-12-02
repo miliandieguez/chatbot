@@ -7,6 +7,20 @@ st.set_page_config(page_title="Chatbot Básico", page_icon="🤖")
 st.title("Eliseu")
 st.markdown("Bienvenido a tu asistente. ¿En qué puedo ayudarte?")
 
+# Sidebar: seleccionar font i mida
+with st.sidebar.expander("Personalización de texto"):
+    font = st.selectbox("Tipo de letra", ["Arial", "Verdana", "Courier", "Comic Sans MS"])
+    size = st.slider("Tamaño de letra", 12, 30, 16)
+
+# Aplicar CSS global
+st.markdown(f"""
+    <style>
+    .stChatMessage div[data-testid="stMarkdownContainer"] p {{
+        font-family: {font} !important;
+        font-size: {size}px !important;
+    }}
+    </style>
+""", unsafe_allow_html=True)
 
 # Sidebar
 with st.sidebar:
@@ -77,7 +91,7 @@ def set_theme(tema):
         """,
         unsafe_allow_html=True
     )
-    
+
 # Definir les imatges per tema
 imagenes_tema = {
     "Light": "https://i.ibb.co/WNYJxvN2/colom.png",
