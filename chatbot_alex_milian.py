@@ -73,15 +73,20 @@ with st.sidebar:
         font = st.selectbox(T["tipo_letra"], ["Arial", "Verdana", "Courier", "Comic Sans MS"])
         size = st.slider(T["medida"], 12, 30, 16)
 
-    st.markdown(f"""
+@st.cache_resource
+def get_font_css(font, size):
+    return f"""
         <style>
         .stChatMessage div[data-testid="stMarkdownContainer"] p {{
             font-family: {font} !important;
             font-size: {size}px !important;
         }}
         </style>
-    """, unsafe_allow_html=True)
+    """
 
+st.markdown(get_font_css(font, size), unsafe_allow_html=True)
+
+with st.sidebar:
     temperatura = st.slider(
         T["temperatura"],
         min_value=0.0,
@@ -101,20 +106,37 @@ with st.sidebar:
         ("gemini-2.5-flash", "gemini-1.5-flash", "gemini-1.5-pro")
     )
 
-    if st.sidebar.button(T["exportar_his"]):
-        if "mensajes" in st.session_state and st.session_state.mensajes:
-            historial_texto = "\n\n".join([msg.content for msg in st.session_state.mensajes])
-            st.download_button(
-                T["descargar_hist"],
-                data=historial_texto,
-                file_name="historial_chat.txt",
-                mime="text/plain"
-            )
+if "chat_model" not in st.session_state:
+    st.session_state.chat_model = ChatGoogleGenerativeAI(
+        model=modelo_elegido,
+        temperature=temperatura
+    )
+else:
+    if (
+        st.session_state.chat_model.model != modelo_elegido or
+        st.session_state.chat_model.temperature != temperatura
+    ):
+        st.session_state.chat_model = ChatGoogleGenerativeAI(
+            model=modelo_elegido,
+            temperature=temperatura
+        )
 
-st.session_state.chat_model = ChatGoogleGenerativeAI(
-    model=modelo_elegido,
-    temperature=temperatura
-)
+@st.cache_resource
+def get_theme_css(color_fondo, color_texto):
+    return f"""
+        <style>
+        .stApp, .main, .block-container {{
+            background-color: {color_fondo} !important;
+            color: {color_texto} !important;
+        }}
+        header, footer {{
+            background-color: {color_fondo} !important;
+        }}
+        .stChatMessage div[data-testid="stMarkdownContainer"] p {{
+            color: {color_texto} !important;
+        }}
+        </style>
+    """
 
 def set_theme(tema):
     if tema == "Light":
@@ -130,23 +152,7 @@ def set_theme(tema):
         color_fondo = "#2E556D"
         color_texto = "#BAE0ED"
 
-    st.markdown(
-        f"""
-        <style>
-        .stApp, .main, .block-container {{
-            background-color: {color_fondo} !important;
-            color: {color_texto} !important;
-        }}
-        header, footer {{
-            background-color: {color_fondo} !important;
-        }}
-        .stChatMessage div[data-testid="stMarkdownContainer"] p {{
-            color: {color_texto} !important;
-        }}
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
+    st.markdown(get_theme_css(color_fondo, color_texto), unsafe_allow_html=True)
 
 imagenes_tema = {
     "Light": "https://i.ibb.co/WNYJxvN2/colom.png",
@@ -159,7 +165,11 @@ with st.sidebar.expander(T["temas"]):
     tema = st.selectbox(T["select_tema"], ("Light", "Dark", "Pink", "Ocean"))
     set_theme(tema)
 
-st.image(imagenes_tema[tema], width=250)
+@st.cache_resource
+def get_theme_image(url):
+    return url
+
+st.image(get_theme_image(imagenes_tema[tema]), width=250)
 
 memory_enabled = st.sidebar.toggle(T["activar_memoria"], value=True)
 if memory_enabled:
@@ -168,10 +178,25 @@ if memory_enabled:
 if "mensajes" not in st.session_state:
     st.session_state.mensajes = []
 
-for msg in st.session_state.mensajes:
+if "rendered_upto" not in st.session_state:
+    st.session_state.rendered_upto = 0
+
+for msg in st.session_state.mensajes[st.session_state.rendered_upto:]:
     role = "assistant" if isinstance(msg, AIMessage) else "user"
     with st.chat_message(role):
         st.markdown(msg.content)
+
+st.session_state.rendered_upto = len(st.session_state.mensajes)
+
+if st.sidebar.button(T["exportar_his"]):
+    if st.session_state.mensajes:
+        historial_texto = "\n\n".join([msg.content for msg in st.session_state.mensajes])
+        st.download_button(
+            T["descargar_hist"],
+            data=historial_texto,
+            file_name="historial_chat.txt",
+            mime="text/plain"
+        )
 
 pregunta = st.chat_input(T["escribe"])
 
