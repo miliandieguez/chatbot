@@ -11,37 +11,43 @@ chat_model = ChatGoogleGenerativeAI(model="gemini-2.5-flash")
 
 def set_theme(tema):
     if tema == "Light":
-        color_fons = "#FFFFFF"
-        color_text = "#000000"
+        color_fondo = "#FFFFFF"
+        color_texto = "#000000"
     elif tema == "Dark":
-        color_fons = "#1E1E1E"
-        color_text = "#FFFFFF"
+        color_fondo = "#1E1E1E"
+        color_texto = "#FFFFFF"
     elif tema == "Pink":
-        color_fons = "#FFE2E7"
-        color_text = "#87374F"
+        color_fondo = "#FFE2E7"
+        color_texto = "#87374F"
     elif tema == "Ocean":
-        color_fons = "#2E556D"
-        color_text = "#BAE0ED"
+        color_fondo = "#2E556D"
+        color_texto = "#BAE0ED"
 
     st.markdown(
         f"""
         <style>
         .stApp, .main, .block-container {{
-            background-color: {color_fons} !important;
-            color: {color_text} !important;
+            background-color: {color_fondo} !important;
+            color: {color_texto} !important;
         }}
         header, footer {{
-            background-color: {color_fons} !important;
+            background-color: {color_fondo} !important;
         }}
         </style>
         """,
         unsafe_allow_html=True
     )
 
-memory_enabled = st.sidebar.toggle("Enable Chat Memory", value=True)
+conill = "https://ibb.co/r2kDnjWM"
+colom ="https://ibb.co/kVDnvn7G"
+ratpenat = "https://ibb.co/xSKygnSn"
+elefant = "https://ibb.co/tM3FvPPq"
+
+st.image(ratpenat, width=150)
+
+memory_enabled = st.sidebar.toggle("Activar memoria del chat", value=True)
 if memory_enabled:
-    st.sidebar.markdown("Chat memory is enabled. Your conversation history will be saved.")
-st.sidebar.markdown("Built using **llama-3.3-70b-versatile** via **Groq API**")
+    st.sidebar.markdown("La memoria del chat está activada. El historial de tu conversación se guardará.")
 
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
