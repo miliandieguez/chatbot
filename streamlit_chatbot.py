@@ -2,12 +2,11 @@ import streamlit as st
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages import AIMessage, HumanMessage
 
-# Configuración inicial
+
 st.set_page_config(page_title="Chatbot Básico", page_icon="🤖")
 st.title("Eliseu")
 st.markdown("Bienvenido a tu asistente. ¿En qué puedo ayudarte?")
 
-# Sidebar: seleccionar font i mida
 with st.sidebar:
     st.title("Menú")
     with st.expander("Personalización de texto"):
@@ -34,8 +33,6 @@ with st.sidebar:
     cols[0].write("Técnico")
     cols[2].write("Creativo")
 
-    # Explicació del model
-
     with st.expander("Información del modelo"):
         st.markdown("""
 ### Selecciona el modelo que mejor se adapte a tus necesidades:
@@ -51,7 +48,6 @@ with st.sidebar:
     )
     if st.sidebar.button("Exportar historial como texto"):
         if st.session_state.mensajes:
-        # Crear un text pla amb tots els missatges
             historial_texto = "\n\n".join([msg.content for msg in st.session_state.mensajes])
         
         st.download_button(
@@ -61,13 +57,11 @@ with st.sidebar:
             mime="text/plain"
         )
 
-# Crear el chat_model con la selección actual
 st.session_state.chat_model = ChatGoogleGenerativeAI(
     model=modelo_elegido,
     temperature=temperatura
 )
 
-# Temas
 def set_theme(tema):
     if tema == "Light":
         color_fondo = "#FFFFFF"
@@ -101,7 +95,6 @@ def set_theme(tema):
         unsafe_allow_html=True
     )
 
-# Definir les imatges per tema
 imagenes_tema = {
     "Light": "https://i.ibb.co/WNYJxvN2/colom.png",
     "Pink": "https://i.ibb.co/c0JDyMk/conill.png",
@@ -109,7 +102,6 @@ imagenes_tema = {
     "Dark": "https://i.ibb.co/B5N9X0CV/ratpenat.png"
 }
 
-# Selector de tema al sidebar
 with st.sidebar.expander("Temas"):
     tema = st.selectbox(
         "Selecciona un tema:",
@@ -117,28 +109,23 @@ with st.sidebar.expander("Temas"):
     )
     set_theme(tema)
 
-# Mostrar la imatge corresponent al tema
 st.image(imagenes_tema[tema], width=250)
 
 
-# Memòria
 memory_enabled = st.sidebar.toggle("Activar memoria del chat", value=True)
 if memory_enabled:
     st.sidebar.markdown("La memoria del chat está activada. El historial de tu conversación se guardará.")
 
-# Inicialitzar històric
 if "mensajes" not in st.session_state:
     st.session_state.mensajes = []
 
 
-# Mostrar històric
 for msg in st.session_state.mensajes:
     role = "assistant" if isinstance(msg, AIMessage) else "user"
     with st.chat_message(role):
         st.markdown(msg.content)
 
 
-# Entrada de l’usuari
 pregunta = st.chat_input("Escribe tu mensaje:")
 
 if pregunta:
