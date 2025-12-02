@@ -8,7 +8,7 @@ st.title("Eliseu")
 st.markdown("Bienvenido a tu asistente. ¿En qué puedo ayudarte?")
 
 # Sidebar: seleccionar font i mida
-with st.sidebar
+with st.sidebar:
     st.title("Menú")
     with expander("Personalización de texto"):
     font = st.selectbox("Tipo de letra", ["Arial", "Verdana", "Courier", "Comic Sans MS"])
