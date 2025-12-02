@@ -43,7 +43,7 @@ colom ="https://i.ibb.co/xKgvdvk2/colom.png"
 ratpenat = "https://i.ibb.co/tMwS20M0/ratpenat.png"
 elefant = "https://i.ibb.co/275HCYYv/elefant.png"
 
-st.image(ratpenat, width=150)
+st.image(ratpenat, width=250)
 
 memory_enabled = st.sidebar.toggle("Activar memoria del chat", value=True)
 if memory_enabled:
