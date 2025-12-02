@@ -9,10 +9,10 @@ st.markdown("Bienvenido a tu asistente. ¿En qué puedo ayudarte?")
 
 # Sidebar: seleccionar font i mida
 with st.sidebar.expander("Personalización de texto"):
+    st.title("Menú")
     font = st.selectbox("Tipo de letra", ["Arial", "Verdana", "Courier", "Comic Sans MS"])
     size = st.slider("Tamaño de letra", 12, 30, 16)
 
-# Aplicar CSS global
 st.markdown(f"""
     <style>
     .stChatMessage div[data-testid="stMarkdownContainer"] p {{
@@ -22,10 +22,7 @@ st.markdown(f"""
     </style>
 """, unsafe_allow_html=True)
 
-# Sidebar
 with st.sidebar:
-    st.title("Menú")
-
 
     temperatura = st.slider(
         "Selecciona temperatura:",
@@ -39,7 +36,8 @@ with st.sidebar:
     cols[2].write("Creativo")
 
     # Explicació del model
-    st.markdown("""
+    with st.expander:
+        st.markdown("""
 ### Selecciona el modelo que mejor se adapte a tus necesidades:
 
 - **gemini-2.5-flash**: Modelo más avanzado, ideal para tareas complejas y respuestas detalladas.
