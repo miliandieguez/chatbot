@@ -38,10 +38,10 @@ def set_theme(tema):
         unsafe_allow_html=True
     )
 
-conill = "https://ibb.co/r2kDnjWM"
-colom ="https://ibb.co/kVDnvn7G"
-ratpenat = "https://ibb.co/xSKygnSn"
-elefant = "https://ibb.co/tM3FvPPq"
+conill = "https://i.ibb.co/GQ7zg6hk/conill.png"
+colom ="https://i.ibb.co/xKgvdvk2/colom.png"
+ratpenat = "https://i.ibb.co/tMwS20M0/ratpenat.png"
+elefant = "https://i.ibb.co/275HCYYv/elefant.png"
 
 st.image(ratpenat, width=150)
 
