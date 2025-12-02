@@ -14,6 +14,7 @@ elefant = "https://i.ibb.co/275HCYYv/elefant.png"
 
 st.image(ratpenat, width=250)
 
+
 with st.sidebar:
     st.title("Menú")
 
@@ -29,29 +30,29 @@ with st.sidebar:
     cols[2].write("Creativo")
 
 
-if "chat_model" not in st.session_state:
-    st.session_state.chat_model = ChatGoogleGenerativeAI(model="gemini-2.5-flash")
+    if "chat_model" not in st.session_state:
+        st.session_state.chat_model = ChatGoogleGenerativeAI(model="gemini-2.5-flash")
 
-with st.expander("Modelos"):
-    modelo_elegido = st.selectbox(
-        "Selecciona un modelo:",
-        ("gemini-2.5-flash", "gemini-1.5-flash", "gemini-1.5-pro")
+        with st.expander("Modelos"):
+            modelo_elegido = st.selectbox(
+                "Selecciona un modelo:",
+                ("gemini-2.5-flash", "gemini-1.5-flash", "gemini-1.5-pro")
+            )
+            if modelo_elegido == "gemini-2.5-flash":
+                st.markdown("Modelo más avanzado, ideal para tareas complejas y respuestas detalladas.")
+                st.imatge(ratpenat, width = 250)
+            elif modelo_elegido == "gemini-1.5-flash":
+                st.markdown("Modelo equilibrado, adecuado para una amplia gama de aplicaciones.")
+                st.image(conill, width = 250)
+            elif modelo_elegido == "gemini-1.5-pro":
+                st.markdown("Modelo optimizado para eficiencia y velocidad, ideal para respuestas rápidas.")
+                st.image(elefant, width = 250)
+        
+
+    st.session_state.chat_model = ChatGoogleGenerativeAI(
+        model=modelo_elegido,
+        temperature=temperatura
     )
-    if modelo_elegido == "gemini-2.5-flash":
-        st.markdown("Modelo más avanzado, ideal para tareas complejas y respuestas detalladas.")
-        st.imatge(ratpenat, width = 250)
-    elif modelo_elegido == "gemini-1.5-flash":
-        st.markdown("Modelo equilibrado, adecuado para una amplia gama de aplicaciones.")
-        st.image(conill, width = 250)
-    elif modelo_elegido == "gemini-1.5-pro":
-        st.markdown("Modelo optimizado para eficiencia y velocidad, ideal para respuestas rápidas.")
-        st.image(elefant, width = 250)
-    
-
-st.session_state.chat_model = ChatGoogleGenerativeAI(
-    model=modelo_elegido,
-    temperature=temperatura
-)
 
 
 def set_theme(tema):
@@ -91,13 +92,13 @@ if memory_enabled:
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
 
-
-with st.expander("Temas"):
-    tema = st.selectbox(
-        "Selecciona un tema:",
-        ("Light", "Dark", "Pink", "Ocean")
-        )
-    set_theme(tema)
+with st.sidebar:
+    with st.expander("Temas"):
+        tema = st.selectbox(
+            "Selecciona un tema:",
+            ("Light", "Dark", "Pink", "Ocean")
+            )
+        set_theme(tema)
 
         
 if "mensajes" not in st.session_state:
