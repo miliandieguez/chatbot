@@ -113,6 +113,26 @@ imagenes_tema = {
     "Dark": "https://i.ibb.co/B5N9X0CV/ratpenat.png"
 }
 
+avatars_tema = {
+    "Light": {
+        "usuario": "https://i.ibb.co/WNYJxvN2/colom.png",
+        "bot": "https://i.ibb.co/tMwS20M0/ratpenat.png"
+    },
+    "Dark": {
+        "usuario": "https://i.ibb.co/c0JDyMk/conill.png",
+        "bot": "https://i.ibb.co/275HCYYv/elefant.png"
+    },
+    "Pink": {
+        "usuario": "https://i.ibb.co/Q760Cbmm/peix.png",
+        "bot": "https://i.ibb.co/B5N9X0CV/ratpenat.png"
+    },
+    "Ocean": {
+        "usuario": "https://i.ibb.co/XfYvJrz5/ratpenat.png",
+        "bot": "https://i.ibb.co/GQ7zg6hk/conill.png"
+    }
+}
+
+
 # Selector de tema al sidebar
 with st.sidebar.expander("Temas"):
     tema = st.selectbox(
@@ -133,6 +153,12 @@ if memory_enabled:
 # Inicialitzar històric
 if "mensajes" not in st.session_state:
     st.session_state.mensajes = []
+
+for msg in st.session_state.mensajes:
+    if isinstance(msg, HumanMessage):
+        st.markdown(f'<img src="{avatars_tema[tema]["usuario"]}" width="40" style="vertical-align: middle; margin-right:5px;"> {msg.content}', unsafe_allow_html=True)
+    else:
+        st.markdown(f'<img src="{avatars_tema[tema]["bot"]}" width="40" style="vertical-align: middle; margin-right:5px;"> {msg.content}', unsafe_allow_html=True)
 
 # Mostrar històric
 for msg in st.session_state.mensajes:
