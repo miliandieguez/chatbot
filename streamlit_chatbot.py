@@ -78,7 +78,7 @@ with st.sidebar:
     with st.expander("Modelos"):
         modelo_elegido = st.selectbox(
             "Selecciona un modelo:",
-            ("gemini-1.5-flash", "gemini-1.5-pro")
+            ("gemini-2.5-flash","gemini-1.5-flash", "gemini-1.5-pro")
         )
         chat_model.model = modelo_elegido
         
