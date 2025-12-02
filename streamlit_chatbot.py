@@ -76,9 +76,9 @@ def set_theme(tema):
 # Definir les imatges per tema
 imagenes_tema = {
     "Light": "https://i.ibb.co/WNYJxvN2/colom.png",
-    "Dark": "https://i.ibb.co/c0JDyMk/conill.png",
-    "Pink": "https://i.ibb.co/Q760Cbmm/peix.png",
-    "Ocean": "https://i.ibb.co/B5N9X0CV/ratpenat.png"
+    "Pink": "https://i.ibb.co/c0JDyMk/conill.png",
+    "Ocean": "https://i.ibb.co/Q760Cbmm/peix.png",
+    "Dark": "https://i.ibb.co/B5N9X0CV/ratpenat.png"
 }
 
 # Selector de tema al sidebar
