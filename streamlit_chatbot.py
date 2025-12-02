@@ -36,6 +36,7 @@ with st.sidebar:
     cols[2].write("Creativo")
 
     # Explicació del model
+with st.sidebar:
     with st.expander:
         st.markdown("""
 ### Selecciona el modelo que mejor se adapte a tus necesidades:
