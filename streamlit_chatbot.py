@@ -18,9 +18,7 @@ st.image(ratpenat, width=250)
 with st.sidebar:
     st.title("Menú")
 
-    cols = st.columns(3)
-    cols[0].write("Técnico")
-    cols[2].write("Creativo")
+
     temperatura = st.slider(
         "Selecciona temperatura:",
         min_value=0.0,
@@ -28,6 +26,9 @@ with st.sidebar:
         value=1.0,
         step=0.05
     )
+    cols = st.columns(3)
+    cols[0].write("Técnico")
+    cols[2].write("Creativo")
 
     # Explicació del model
     st.markdown("""
