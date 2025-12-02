@@ -7,12 +7,6 @@ st.set_page_config(page_title="Chatbot Básico", page_icon="🤖")
 st.title("Eliseu")
 st.markdown("Bienvenido a tu asistente. ¿En qué puedo ayudarte?")
 
-# Imatges
-colom = "https://i.ibb.co/WNYJxvN2/colom.png"
-conill = "https://i.ibb.co/c0JDyMk/conill.png"
-peix = "https://i.ibb.co/Q760Cbmm/peix.png"
-ratpenat = "https://i.ibb.co/B5N9X0CV/ratpenat.png"
-st.image(ratpenat, width=250)
 
 # Sidebar
 with st.sidebar:
@@ -79,14 +73,25 @@ def set_theme(tema):
         """,
         unsafe_allow_html=True
     )
+# Definir les imatges per tema
+imagenes_tema = {
+    "Light": "https://i.ibb.co/WNYJxvN2/colom.png",
+    "Dark": "https://i.ibb.co/c0JDyMk/conill.png",
+    "Pink": "https://i.ibb.co/Q760Cbmm/peix.png",
+    "Ocean": "https://i.ibb.co/B5N9X0CV/ratpenat.png"
+}
 
-with st.sidebar:
-    with st.expander("Temas"):
-        tema = st.selectbox(
-            "Selecciona un tema:",
-            ("Light", "Dark", "Pink", "Ocean")
-        )
-        set_theme(tema)
+# Selector de tema al sidebar
+with st.sidebar.expander("Temas"):
+    tema = st.selectbox(
+        "Selecciona un tema:",
+        ("Light", "Dark", "Pink", "Ocean")
+    )
+    set_theme(tema)
+
+# Mostrar la imatge corresponent al tema
+st.image(imagenes_tema[tema], width=250)
+
 
 # Memòria
 memory_enabled = st.sidebar.toggle("Activar memoria del chat", value=True)
