@@ -8,21 +8,20 @@ st.title("Eliseu")
 st.markdown("Bienvenido a tu asistente. ¿En qué puedo ayudarte?")
 
 # Sidebar: seleccionar font i mida
-with st.sidebar.expander("Personalización de texto"):
+with st.sidebar
     st.title("Menú")
+    with expander("Personalización de texto"):
     font = st.selectbox("Tipo de letra", ["Arial", "Verdana", "Courier", "Comic Sans MS"])
     size = st.slider("Tamaño de letra", 12, 30, 16)
 
-st.markdown(f"""
-    <style>
-    .stChatMessage div[data-testid="stMarkdownContainer"] p {{
-        font-family: {font} !important;
-        font-size: {size}px !important;
-    }}
-    </style>
-""", unsafe_allow_html=True)
-
-with st.sidebar:
+    st.markdown(f"""
+        <style>
+        .stChatMessage div[data-testid="stMarkdownContainer"] p {{
+            font-family: {font} !important;
+            font-size: {size}px !important;
+        }}
+        </style>
+    """, unsafe_allow_html=True)
 
     temperatura = st.slider(
         "Selecciona temperatura:",
