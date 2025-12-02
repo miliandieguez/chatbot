@@ -18,6 +18,9 @@ st.image(ratpenat, width=250)
 with st.sidebar:
     st.title("Menú")
 
+    cols = st.columns(3)
+    cols[0].write("Técnico")
+    cols[2].write("Creativo")
     temperatura = st.slider(
         "Selecciona temperatura:",
         min_value=0.0,
