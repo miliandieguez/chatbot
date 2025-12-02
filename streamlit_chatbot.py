@@ -61,9 +61,40 @@ with st.sidebar:
             file_name="historial_chat.txt",
             mime="text/plain"
         )
-    with st.expander("Personalizar avatares"):
-        color_usuario = st.color_picker("Color del avatar del usuario", "#1E90FF")
-        color_bot = st.color_picker("Color del avatar del chatbot", "#FF4500")
+    # Sidebar: activar Tic-Tac-Toe
+    joc_activat = st.sidebar.checkbox("Jugar a Tres en Ralla")
+
+    if joc_activat:
+        st.header("Tres en Ralla")
+        
+        if "board" not in st.session_state:
+            st.session_state.board = [""] * 9
+            st.session_state.turn = "X"
+        
+        def click(i):
+            if st.session_state.board[i] == "":
+                st.session_state.board[i] = st.session_state.turn
+                st.session_state.turn = "O" if st.session_state.turn == "X" else "X"
+
+        st.write("Turno de:", st.session_state.turn)
+
+        for i in range(3):
+            cols = st.columns(3)
+            for j in range(3):
+                idx = i*3 + j
+                if cols[j].button(st.session_state.board[idx] or " ", key=idx):
+                    click(idx)
+    else:
+        # Aquí va el teu codi normal del chatbot
+        pregunta = st.chat_input("Escribe tu mensaje:")
+        if pregunta:
+            with st.chat_message("user"):
+                st.markdown(pregunta)
+            st.session_state.mensajes.append(HumanMessage(content=pregunta))
+            respuesta = st.session_state.chat_model.invoke(st.session_state.mensajes)
+            with st.chat_message("assistant"):
+                st.markdown(respuesta.content)
+            st.session_state.mensajes.append(respuesta)
 
 # Crear el chat_model con la selección actual
 st.session_state.chat_model = ChatGoogleGenerativeAI(
@@ -112,26 +143,6 @@ imagenes_tema = {
     "Ocean": "https://i.ibb.co/Q760Cbmm/peix.png",
     "Dark": "https://i.ibb.co/B5N9X0CV/ratpenat.png"
 }
-
-avatars_tema = {
-    "Light": {
-        "usuario": "https://i.ibb.co/WNYJxvN2/colom.png",
-        "bot": "https://i.ibb.co/tMwS20M0/ratpenat.png"
-    },
-    "Dark": {
-        "usuario": "https://i.ibb.co/c0JDyMk/conill.png",
-        "bot": "https://i.ibb.co/275HCYYv/elefant.png"
-    },
-    "Pink": {
-        "usuario": "https://i.ibb.co/Q760Cbmm/peix.png",
-        "bot": "https://i.ibb.co/B5N9X0CV/ratpenat.png"
-    },
-    "Ocean": {
-        "usuario": "https://i.ibb.co/XfYvJrz5/ratpenat.png",
-        "bot": "https://i.ibb.co/GQ7zg6hk/conill.png"
-    }
-}
-
 
 # Selector de tema al sidebar
 with st.sidebar.expander("Temas"):
