@@ -69,10 +69,15 @@ def set_theme(tema):
         header, footer {{
             background-color: {color_fondo} !important;
         }}
+        /* Cambiar color del texto dentro de los chat messages */
+        .stChatMessage div[data-testid="stMarkdownContainer"] p {{
+            color: {color_texto} !important;
+        }}
         </style>
         """,
         unsafe_allow_html=True
     )
+    
 # Definir les imatges per tema
 imagenes_tema = {
     "Light": "https://i.ibb.co/WNYJxvN2/colom.png",
