@@ -36,7 +36,7 @@ with st.sidebar:
     cols[2].write("Creativo")
 
     # Explicació del model
-with st.sidebar:
+
     with st.expander("Información del modelo"):
         st.markdown("""
 ### Selecciona el modelo que mejor se adapte a tus necesidades:
@@ -50,6 +50,18 @@ with st.sidebar:
         "Selecciona un modelo:",
         ("gemini-2.5-flash","gemini-1.5-flash", "gemini-1.5-pro")
     )
+    if st.sidebar.button("Exportar historial como texto"):
+        if st.session_state.mensajes:
+        # Crear un text pla amb tots els missatges
+            historial_texto = "\n\n".join([msg.content for msg in st.session_state.mensajes])
+        
+        st.download_button(
+            "Descargar historial",
+            data=historial_texto,
+            file_name="historial_chat.txt",
+            mime="text/plain"
+        )
+
 
 # Crear el chat_model con la selección actual
 st.session_state.chat_model = ChatGoogleGenerativeAI(
