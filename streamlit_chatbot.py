@@ -154,11 +154,6 @@ if memory_enabled:
 if "mensajes" not in st.session_state:
     st.session_state.mensajes = []
 
-for msg in st.session_state.mensajes:
-    if isinstance(msg, HumanMessage):
-        st.markdown(f'<img src="{avatars_tema[tema]["usuario"]}" width="40" style="vertical-align: middle; margin-right:5px;"> {msg.content}', unsafe_allow_html=True)
-    else:
-        st.markdown(f'<img src="{avatars_tema[tema]["bot"]}" width="40" style="vertical-align: middle; margin-right:5px;"> {msg.content}', unsafe_allow_html=True)
 
 # Mostrar històric
 for msg in st.session_state.mensajes:
