@@ -61,7 +61,9 @@ with st.sidebar:
             file_name="historial_chat.txt",
             mime="text/plain"
         )
-
+    with st.expander("Personalizar avatares"):
+        color_usuario = st.color_picker("Color del avatar del usuario", "#1E90FF")
+        color_bot = st.color_picker("Color del avatar del chatbot", "#FF4500")
 
 # Crear el chat_model con la selección actual
 st.session_state.chat_model = ChatGoogleGenerativeAI(
